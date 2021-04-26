@@ -1,0 +1,10 @@
+jQuery  VS React
+
+JQuery körs direkt via DOM vilket gör att prestandan blir något sämre,
+React använder virtuell DOM för bättre hastighet, prestanda och användarupplevelse.
+JQuery är inte bra för stora applikationer.
+jQuery gör arbetet enklare för vissa typer av projekt, som att bygga en enkel webbplats med animerade navigeringsmenyer tex.
+Jquery har funnits 7 år längre än react. På senare tid har react tagit över och det flesta webbutvecklingsföretagen använder idag React.
+Jquery bibloteket är 75kb, medan React-bibloteket är 95kb.
+
+Det flesta webbutvecklare har skiftat över till React, för att man kan bygga snabbare och bättre applikationer.
