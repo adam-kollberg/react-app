@@ -1,0 +1,36 @@
+.site-header {
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+padding: 10px;
+}
+
+
+
+.logo {
+ width: 50%;
+}
+
+.app-nav {
+width: 50%;
+display: flex;
+justify-content: space-evenly;
+}
+
+
+@media (min-width: 1025px) {
+    .site-header {
+        flex-direction: row    ;
+    }
+
+    .logo {
+        width: 20%;
+       }
+
+    .app-nav {
+        width: 30%;
+    }
+    
+  }
