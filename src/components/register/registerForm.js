@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -12,6 +12,7 @@ function RegisterForm({userName}) {
   }
 
   const[user, setUser] = useState(initialValue);
+  const history = useHistory();
 
 function onSubmit(e){
 e.preventDefault();
@@ -24,6 +25,8 @@ axios.post('http://localhost:1337/auth/local/register', {
     console.log('Well done!');
     console.log('User profile', response.data.user);
     console.log('User token', response.data.jwt);
+
+    history.push("/login");
 
 
   })

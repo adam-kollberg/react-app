@@ -1,8 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
+
 function LoginForm() {
+
+
+
 
 
   const initialValue = {
@@ -12,11 +16,17 @@ function LoginForm() {
   }
   const [login, setLogin] = useState(initialValue);
   const [error, setError]=useState ("");
-  const [loggedIn, setloggedIn]=useState(false);
-  const [setTokenLocal, setToken]=useState(false);
+  const [getToken, setToken]=useState("");
+  const history = useHistory();
   
-
-
+  useEffect (()=>{
+    const Token = localStorage.getItem("token");
+    setToken(Token);
+   
+   
+   
+   
+     }, [])
   
 
 function changeHandler(e){
@@ -38,9 +48,17 @@ function submitHandler (e) {
     // Handle success.
     console.log('Well done!');
     console.log('User profile', response.data.user);
-    const  token  = response.data.jwt;
-   localStorage.setItem ('token', token);
-   setToken(localStorage.getItem("token"));
+    
+    const token = localStorage.setItem("token", response.data.jwt);
+    history.push("/");
+    history.go(0);
+    
+    
+    
+    //const getToken =localStorage.getItem("token")
+
+    //setToken(getToken);
+   
 
     
   })
@@ -50,7 +68,8 @@ function submitHandler (e) {
 
     setError("Dina inlämningsuppgifter stämmer inte")
   });
-
+  
+  
 
 
 }
@@ -61,12 +80,10 @@ function submitHandler (e) {
 
 
 
-
-
   return(
       <>
 
-{setTokenLocal ? <div>Tack {login.email} du är inloggad</div> :  
+{getToken ? <div>Tack {login.email} du är inloggad</div> :  
 <div className="login-box">
   <h2>Login</h2>
   <form onSubmit={submitHandler}>
@@ -90,13 +107,15 @@ function submitHandler (e) {
   
   </form>
 
-  <Link to = "register">
+  <Link to = "/register">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
       REGISTER
     </Link>
+
+    <Link to = "/forgot-password">forgot</Link>
 </div>
 }
 </>

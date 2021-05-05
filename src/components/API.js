@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react'
-import axios from "axios"
+import React, { useState } from "react";
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
+
 
 function API() {
+const [value, onChange] = useState(new Date());
 
-axios.get('http://localhost:1337/products').then(response => {
-    console.log(response);
-  });
-   
 
 
     return (
-    <div>
-   
-            
-        
-    </div>
+        <div>
+    <Calendar
+        onChange={onChange}
+        value={value}
+      />
+        </div>
     )
 }
 

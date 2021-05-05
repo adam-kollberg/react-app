@@ -4,6 +4,7 @@ import CardList from "./cards/cardList";
 import Home from "./home/home"
 import Booking from"./booking/booking"
 import LoginForm from "./login/loginForm"
+import ResetPassword from "./login/forgotPassword"
 import AddCard from "./cards/addCards"
 import RegisterForm from "./register/registerForm"
 import{Route, BrowserRouter as Router, Link, Switch} from "react-router-dom";
@@ -27,6 +28,7 @@ export default function AppRoute() {
 <Route exact path="/add-products" component={AddCard}/>
 <Route exact path="/register" component={RegisterForm}/>
 <Route exact path="/my-bookings" component={BookingList}/>
+<Route exact path="/forgot-password" component={ResetPassword}/>
 </Switch>
 
 

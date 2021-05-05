@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
 
-
+import API from "../API"
 
 function Booking() {
   
@@ -10,6 +10,14 @@ function useQuery() {
  }
   function Heading({ Heading }) {
     return <h1>{Heading}</h1>;
+  }
+
+  function ID({ ID }) {
+    return <h1>{ID}</h1>;
+  }
+
+  function Price({ Price }) {
+    return <h1>{Price}</h1>;
   }
 
 
@@ -22,7 +30,9 @@ function useQuery() {
     name: "",
     email: "",
     adress: "",
-    phone: ""
+    phone: "",
+    date: "",
+    time:"",
     
   }
 
@@ -52,9 +62,6 @@ function useQuery() {
 
 
 
-
-
-
 <form>
 
 <div class="bg-grey-lighter min-h-screen flex flex-col">
@@ -63,6 +70,7 @@ function useQuery() {
                 <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <h1 class="mb-8 text-3xl text-center">Boka</h1>
                     <h2 class="mb-8 text-3xl text-center"><Heading Heading={query.get("name")}/></h2>
+                    <h2 class="mb-8 text-3xl text-center"><Heading Heading={query.get("price")}/></h2>
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -89,6 +97,9 @@ function useQuery() {
                         name="phone"
                         placeholder="Telefon"
                         onChange={onChange} />
+                      <API/> 
+
+
 
                     <button
                         type="submit"
