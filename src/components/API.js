@@ -3,24 +3,15 @@ import axios from "axios"
 
 function API() {
 
-
-    const [data, setData] = useState("");
-
-    useEffect(() => {
-      const fetchData = async ()=> {
-      
-     const response = await axios.get ("https://jsonplaceholder.typicode.com/todos/1")
-
-      setData(response.data)
-      }
-       
-    fetchData()
-    }, []);
+axios.get('http://localhost:1337/products').then(response => {
+    console.log(response);
+  });
+   
 
 
     return (
     <div>
-   {data.title}
+   
             
         
     </div>

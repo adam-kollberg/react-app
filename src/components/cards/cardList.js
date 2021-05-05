@@ -1,25 +1,42 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Card from "./card";
-
-
-
-const arrayOfProducts = [
- { productName: "Psykologbesök på Motagning",  productPrice: "1800", productDate: "2021-04-08" } ,  
- { productName: "Psykologbesök video",  productPrice: "800" } , 
- { productName: "Psykologbesök KBT Online",  productPrice: "1000" }  
-]
+import axios from "axios";
 
 function CardList () {
 
-return(
+const [products, setProducts] = useState([]);
 
+
+useEffect (()=>{
+const fetchProducts=async()=> {
+
+const response = await axios.get("http://localhost:1337/products")
+
+setProducts(response.data)
+
+console.log(response);
+
+ }
+ 
+ fetchProducts();
+
+}, [])
+
+
+
+
+
+return(
+<>
 <div className="flex flex-row flex-wrap justify-center">
 
-{arrayOfProducts.map((product)=>{
+{products.map((product)=>{
         return (
-<Card productName={product.productName}  
-      productPrice={product.productPrice} 
-      productDate={product.productDate} 
+<Card productName={product.name}  
+      productPrice={product.price} 
+      productDate={product.date}
+      productImg={product.productimg}
+      productID =  {product.id} 
       
       
       
@@ -32,6 +49,8 @@ return(
 
 </div>
 
+
+</>
 )
 
 }
