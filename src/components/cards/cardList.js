@@ -36,7 +36,7 @@ return(
       productPrice={product.price} 
       productDate={product.date}
       productImg={product.productimg}
-      productID =  {product.id} 
+      teraphist={product.teraphist.name}
       
       
       

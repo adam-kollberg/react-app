@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
 
-function RegisterForm({userName}) {
+function RegisterForm() {
 
   const initialValue = {
     username: "",

@@ -29,8 +29,6 @@ function changeHandler(e){
 function submitHandler(e) {
 e.preventDefault();
 
-
-
 axios.post('http://localhost:1337/auth/forgot-password', {
     email: resetPassword.email,
     url:'http:/localhost:1337/admin/plugins/users-permissions/auth/reset-password',
@@ -50,9 +48,10 @@ axios.post('http://localhost:1337/auth/forgot-password', {
 
 
 return (
-
-
+<>
+<div className="login-box">
 <form onSubmit={submitHandler}>
+
     <div className="user-box">
       <input type="text" value ={resetPassword.email} name="email" required="" onChange={changeHandler}  />
       <label>Type in your email to reset password</label>
@@ -63,12 +62,13 @@ return (
       <span></span>
       <span></span>
       <span></span>
-     Reset
+     Reset password
     </button>
 
 </form>
+</div>
 
-
+</>
 
 )
 

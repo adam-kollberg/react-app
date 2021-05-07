@@ -6,9 +6,6 @@ import axios from 'axios';
 function LoginForm() {
 
 
-
-
-
   const initialValue = {
     
     email:"",
@@ -48,16 +45,11 @@ function submitHandler (e) {
     // Handle success.
     console.log('Well done!');
     console.log('User profile', response.data.user);
-    
     const token = localStorage.setItem("token", response.data.jwt);
     history.push("/");
     history.go(0);
     
-    
-    
-    //const getToken =localStorage.getItem("token")
 
-    //setToken(getToken);
    
 
     

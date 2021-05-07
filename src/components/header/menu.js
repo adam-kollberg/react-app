@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import{Route, BrowserRouter as Router, Link} from "react-router-dom";
+import React, { useState, useEffect,  } from "react";
+import{Route, BrowserRouter as Router, Link, useHistory} from "react-router-dom";
 
 
 function Menu() {
 
   const [getToken, setToken]=useState(false);
-
+  const history = useHistory();
 
   useEffect (()=>{
     const Token = localStorage.getItem("token");
@@ -16,7 +16,12 @@ function Menu() {
    
      }, [])
 
-   
+   function logout() {
+
+    localStorage.clear();
+    history.go(0);
+
+   }
 
 
    
@@ -30,7 +35,7 @@ function Menu() {
         <nav className = "app-nav">
         <Link exact to="/">Start</Link>
         
-        <Link to="/login">Logout</Link>
+        <Link to="/login" onClick={logout}>Logout</Link>
         
       <Link to="/add-products">Add products</Link>
         <Link to="/my-bookings">My Bookings</Link>

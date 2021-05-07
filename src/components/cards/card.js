@@ -1,5 +1,6 @@
 import React from "react";
 import {Link, useParams, Switch} from "react-router-dom"
+import dateFormat from 'dateformat';
 
 
 
@@ -7,7 +8,7 @@ import {Link, useParams, Switch} from "react-router-dom"
 
 
 
-export default function Card ({productName, productPrice, productDate, productImg, productID}) {
+export default function Card ({productName, productPrice, productDate, productImg, teraphist }) {
 
 
 
@@ -26,9 +27,11 @@ return(
 <div className="w-2/3 p-4">
 
 <h1 className="text-gray-900 font-bold text-2xl adam">{productName}</h1>
+<h1 className="text-gray-400 font-bold text-1xl adam">Terapeut: {teraphist}</h1>
 
-<p className="mt-2 text-gray-600 text-sm">{productDate}</p>
-<p className="mt-2 text-gray-600 text-sm">{productID}</p>
+<p className="mt-2 text-gray-600 text-sm">{dateFormat(productDate)}</p>
+
+
 
 
 
@@ -40,12 +43,12 @@ return(
 
 <div className="flex item-center justify-between mt-3">
 
-<h1 className="text-gray-700 font-bold text-xl">{productPrice}</h1>
+<h1 className="text-gray-700 font-bold text-xl">{productPrice} SEK </h1>
 
 
 
-<Link to= {`/book?name=${productName}&id=${productID}&price=${productPrice}`}>
-<button value={productID} className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Boka nu</button>
+<Link to= {`/book?name=${productName}&price=${productPrice}`}>
+<button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Boka nu</button>
 </Link>
 
 

@@ -9,15 +9,11 @@ function useQuery() {
     return new URLSearchParams(useLocation().search); 
  }
   function Heading({ Heading }) {
-    return <h1>{Heading}</h1>;
-  }
-
-  function ID({ ID }) {
-    return <h1>{ID}</h1>;
+    return <h1 className = "mb-8 text-2xl text-center">{Heading}</h1>;
   }
 
   function Price({ Price }) {
-    return <h1>{Price}</h1>;
+    return <h3 className = "mb-8 text-1xl text-center">{Price} <span>sek</span></h3>;
   }
 
 
@@ -68,9 +64,9 @@ function useQuery() {
 
             <div class="container max-w-sm mx-auto m-4 flex-2 flex flex-col items-center justify-center px-2">
                 <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 class="mb-8 text-3xl text-center">Boka</h1>
-                    <h2 class="mb-8 text-3xl text-center"><Heading Heading={query.get("name")}/></h2>
-                    <h2 class="mb-8 text-3xl text-center"><Heading Heading={query.get("price")}/></h2>
+                    
+                    <Heading Heading={query.get("name")}/>
+                    <Price Price={query.get("price")}/>
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -97,7 +93,7 @@ function useQuery() {
                         name="phone"
                         placeholder="Telefon"
                         onChange={onChange} />
-                      <API/> 
+                      
 
 
 
