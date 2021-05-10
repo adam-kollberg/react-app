@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+import dateFormat from 'dateformat';
+import axios from "axios";
 
-import API from "../API"
 
 function Booking() {
   
@@ -16,6 +17,10 @@ function useQuery() {
     return <h3 className = "mb-8 text-1xl text-center">{Price} <span>sek</span></h3>;
   }
 
+  function Date({ Date }) {
+    return <h3 className = "mb-8 text-1xl text-center">{Date} <span></span></h3>;
+  }
+
 
   
   
@@ -27,15 +32,32 @@ function useQuery() {
     email: "",
     adress: "",
     phone: "",
-    date: "",
-    time:"",
+    
+    
+   
     
   }
 
   const [formValues, setFormValues] = useState(bookingValues);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+
+    const response = await axios.post('http://localhost:1337/bookings', {
+      namn: formValues.name,
+      email: formValues.email,
+      adress: formValues.adress,
+      phone: formValues.phone,
+      price: query.get("price"),
+      date: query.get("date"),
+      product: query.get("id"),
+
+      
+    })
+
+    console.log(response)
+  
+
     
   }
 
@@ -55,10 +77,7 @@ function useQuery() {
 </section>
 
 
-
-
-
-<form>
+<form onSubmit={onSubmit}>
 
 <div class="bg-grey-lighter min-h-screen flex flex-col">
 
@@ -67,6 +86,7 @@ function useQuery() {
                     
                     <Heading Heading={query.get("name")}/>
                     <Price Price={query.get("price")}/>
+                    <Date Date={dateFormat(query.get("date"))}/>
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -99,8 +119,7 @@ function useQuery() {
 
                     <button
                         type="submit"
-                        class="w-full text-center py-3 rounded bg-green text-black hover:bg-green-dark focus:outline-none my-1">
-                          Boka nu</button>
+                        className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Boka</button>
                         
                     
                 </div>

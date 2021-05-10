@@ -10,7 +10,7 @@ import RegisterForm from "./register/registerForm"
 import{Route, BrowserRouter as Router, Link, Switch} from "react-router-dom";
 import BookingList  from "./booking/myBooking";
 import SendPassword from "./login/resetPassword";
-import UploadFile from "./cards/uploadFile";
+
 
 
 
@@ -31,7 +31,7 @@ export default function AppRoute() {
 <Route exact path="/my-bookings" component={BookingList}/>
 <Route exact path="/forgot-password" component={ResetPassword}/>
 <Route exact path="/reset-password" component={SendPassword}/>
-<Route exact path="/upload" component={UploadFile}/>
+
 </Switch>
 
 

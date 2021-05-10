@@ -88,23 +88,13 @@ function submitHandler (e) {
       <label>Password</label>
     </div>
     <h1>{error}</h1>
-    <button>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      LOG IN
-    </button>
+    <button class="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Login</button>
   
   
   </form>
 
   <Link to = "/register">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      REGISTER
+  <button class="uppercase mt-8 mx-auto shadow bg-black hover:bg-black-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Register</button>
     </Link>
 
     <Link to = "/forgot-password">forgot</Link>
