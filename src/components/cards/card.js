@@ -2,11 +2,15 @@ import React, {useState} from "react";
 import {Link, useParams, Switch} from "react-router-dom"
 import dateFormat from 'dateformat';
 import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
 
 
 
 
-export default function Card ({productName, productPrice, productDate, productImg, teraphist, productID }) {
+
+
+export default function Card ({productName, productPrice, productDate, productImg, teraphist, productID, teraphistAdress  }) {
     
     const customStyles = {
         content : {
@@ -46,10 +50,11 @@ return(
 
 <div className="w-2/3 p-4">
 
-<h1 className="text-gray-900 font-bold text-2xl adam">{productName}</h1>
-<h1 className="text-gray-400 font-bold text-1xl adam">Terapeut: {teraphist}</h1>
+<h1 className="text-gray-900 font-bold text-2xl ">{productName}</h1>
+<h4 className="mt-2 text-gray-600 text-sm"><FontAwesomeIcon icon={faUser}/> {teraphist}</h4>
+<h4 className="mt-2 text-gray-600 text-sm"><FontAwesomeIcon icon={faMapMarkerAlt}/> {teraphistAdress}</h4>
 
-<p className="mt-2 text-gray-600 text-sm">{dateFormat(productDate)}</p>
+<p className="mt-2 text-gray-600 text-sm"><FontAwesomeIcon icon={faClock}/> {dateFormat(productDate , "yyyy-mm-dd  HH:MM")}</p>
 
 
 
@@ -67,61 +72,16 @@ return(
 
 
 
-<Link to= {`/book?name=${productName}&price=${productPrice}&date=${productDate}&id=${productID}`}>
+<Link to= {`/book?name=${productName}&price=${productPrice}&date=${productDate}&id=${productID}&teraphist=${teraphist}`}>
 <button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Boka nu</button>
 </Link>
 
 
-<div>
-<button onClick={openModal} className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">Boka nu 2</button>
-<Modal
-          isOpen={modalIsOpen}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >  
-        
-        <button onClick={closeModal}>close</button>
-        <h1 className = "mb-8 text-1xl text-center">{productName}</h1>
-        <h3 className = "mb-8 text-1xl text-center">{productPrice}</h3>
-        <h3 className = "mb-8 text-1xl text-center">{dateFormat(productDate)}</h3>
-        <form>
-        <div class="container max-w-sm mx-auto m-4 flex-2 flex flex-col items-center justify-center px-2">
-                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    
-                    <input 
-                        type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
-                        name="name"
-                        placeholder="Full Name"
-                         />
-
-                    <input 
-                        type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
-                        name="email"
-                        placeholder="Email"
-                         />
-
-                    <input 
-                        type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
-                        name="adress"
-                        placeholder="Adress" 
-                        />
-                    
-          </div>
-          </div>
-        </form>
-      </Modal>
-</div>
 
 
 </div>
-
 </div>
-
 </div>
-
 </div>
 
 

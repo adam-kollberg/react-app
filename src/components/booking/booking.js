@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import dateFormat from 'dateformat';
 import axios from "axios";
 
@@ -14,11 +14,15 @@ function useQuery() {
   }
 
   function Price({ Price }) {
-    return <h3 className = "mb-8 text-1xl text-center">{Price} <span>sek</span></h3>;
+    return  <h3 className = "mb-8 text-1xl text-center"><span><strong>Pris: </strong></span>{Price} <span>SEK</span></h3>;
   }
 
   function Date({ Date }) {
-    return <h3 className = "mb-8 text-1xl text-center">{Date} <span></span></h3>;
+    return <h3 className = "mb-8 text-1xl text-center"><span><strong>Datum: </strong></span>{Date} <span></span></h3>;
+  }
+
+  function Teraphist({ Teraphist }) {
+    return <h3 className = "mb-8 text-1xl text-center"><span><strong>Hos Terapeut: </strong></span>{Teraphist} <span></span></h3>;
   }
 
 
@@ -39,6 +43,9 @@ function useQuery() {
   }
 
   const [formValues, setFormValues] = useState(bookingValues);
+ 
+
+  const history = useHistory();
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -51,12 +58,19 @@ function useQuery() {
       price: query.get("price"),
       date: query.get("date"),
       product: query.get("id"),
+      token: localStorage.getItem("token"),
+      users_permissions_user: localStorage.getItem("id")
 
       
     })
 
-    console.log(response)
+    console.log(response);
+
+  localStorage.setItem("BookingID", response.data.id)
   
+  history.push("/checkout");
+
+
 
     
   }
@@ -83,15 +97,16 @@ function useQuery() {
 
             <div class="container max-w-sm mx-auto m-4 flex-2 flex flex-col items-center justify-center px-2">
                 <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    
+                <h3 className = "mb-8 text-1xl text-center">Du bokar nu:</h3>
                     <Heading Heading={query.get("name")}/>
                     <Price Price={query.get("price")}/>
-                    <Date Date={dateFormat(query.get("date"))}/>
+                    <Date Date={dateFormat(query.get("date"),  `yyyy-mm-dd HH:MM`)}/>
+                    <Teraphist Teraphist={(query.get("teraphist"))}/>
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
                         name="name"
-                        placeholder="Full Name"
+                        placeholder="Namn på Bokning"
                         onChange={onChange} />
 
                     <input 
@@ -116,10 +131,12 @@ function useQuery() {
                       
 
 
-
+                      
                     <button
                         type="submit"
-                        className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Boka</button>
+                        className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Fortsätt till betalning
+                        </button>
+                        
                         
                     
                 </div>

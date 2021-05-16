@@ -46,6 +46,9 @@ function submitHandler (e) {
     console.log('Well done!');
     console.log('User profile', response.data.user);
     const token = localStorage.setItem("token", response.data.jwt);
+    localStorage.setItem("id", response.data.user.id)
+
+    console.log("id", response.data.user.id)
     history.push("/");
     history.go(0);
     

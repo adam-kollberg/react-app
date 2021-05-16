@@ -44,14 +44,16 @@ const initialValue = {
 
 
 async function onSubmit(e){
+  
 e.preventDefault();
 
+console.log("id" , addProduct.teraphist);
 const response = await axios.post('http://localhost:1337/products', {
       name: addProduct.productname,
       price: addProduct.price,
       description: addProduct.description,
       date: addProduct.date,
-      teraphist: addProduct.teraphist.value,
+      teraphist: addProduct.teraphist
     })
 
     console.log(response);
@@ -131,7 +133,7 @@ return (
   <select value={addProduct.teraphist} onChange={onChange} name="teraphist"  class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
     <option >Choose a theraphist</option>
     {teraphists.map((teraphist)=>
-    <option name="teraphist">{teraphist.name}</option>
+    <option value={teraphist.id} name="teraphist">{teraphist.name}</option>
     )}
   </select>
   
