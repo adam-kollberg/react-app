@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import {  useHistory } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -74,7 +74,7 @@ return (
       <input type="password" name="password" value={user.password} required="" onChange={onChange}  />
       <label>Password</label>
     </div>
-    <button class="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Register</button>
+    <button className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Register</button>
   
   
   </form>

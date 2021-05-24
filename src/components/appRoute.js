@@ -7,7 +7,7 @@ import LoginForm from "./login/loginForm"
 import ResetPassword from "./login/forgotPassword"
 import AddCard from "./cards/addCards"
 import RegisterForm from "./register/registerForm"
-import{Route, BrowserRouter as Router, Link, Switch} from "react-router-dom";
+import{Route, BrowserRouter as Router, Switch} from "react-router-dom";
 import BookingList  from "./booking/myBooking";
 import SendPassword from "./login/resetPassword";
 import CheckoutForm from "./booking/checkout";
@@ -39,16 +39,16 @@ const [getToken, setToken]=useState(false);
 <Header/>
 <Switch>
 
-<Route exact path="/"  component={Home}/>
+<Route path="/"  component={Home}/>
 <Route path="/book" component={Booking}/>
-<Route exact path="/login" component={LoginForm}  />
-<Route exact path="/add-products" component={AddCard}/>
-<Route exact path="/register" component={RegisterForm}/>
-<Route exact path="/my-bookings" component={BookingList}/>
-<Route exact path="/forgot-password" component={ResetPassword}/>
-<Route exact path="/reset-password" component={SendPassword}/>
-<Route exact path="/checkout" component={CheckoutForm}/>  
-<Route exact path="/my-booking" component={SingleOrder}/> 
+<Route  path="/login" component={LoginForm}  />
+<Route  path="/add-products" component={AddCard}/>
+<Route  path="/register" component={RegisterForm}/>
+<Route  path="/my-bookings" component={BookingList}/>
+<Route  path="/forgot-password" component={ResetPassword}/>
+<Route  path="/reset-password" component={SendPassword}/>
+<Route  path="/checkout" component={CheckoutForm}/>  
+<Route  path="/my-booking" component={SingleOrder}/> 
 </Switch>
 </Router>
 

@@ -1,9 +1,8 @@
 import  {React, useState, useEffect} from 'react'
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./checkout.css"
 import dateFormat from 'dateformat';
-import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+
 
 
 

@@ -45,7 +45,7 @@ function submitHandler (e) {
     // Handle success.
     console.log('Well done!');
     console.log('User profile', response.data.user);
-    const token = localStorage.setItem("token", response.data.jwt);
+    localStorage.setItem("token", response.data.jwt);
     localStorage.setItem("id", response.data.user.id)
 
     console.log("id", response.data.user.id)
@@ -91,13 +91,13 @@ function submitHandler (e) {
       <label>Password</label>
     </div>
     <h1>{error}</h1>
-    <button class="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Login</button>
+    <button className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Login</button>
   
   
   </form>
 
   <Link to = "/register">
-  <button class="uppercase mt-8 mx-auto shadow bg-black hover:bg-black-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Register</button>
+  <button className="uppercase mt-8 mx-auto shadow bg-black hover:bg-black-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Register</button>
     </Link>
 
     <Link to = "/forgot-password">forgot</Link>

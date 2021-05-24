@@ -3,7 +3,7 @@ import axios from "axios";
 import dateFormat from 'dateformat';
 import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faUser,  faClock } from "@fortawesome/free-solid-svg-icons";
 
 
 

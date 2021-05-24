@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import dateFormat from 'dateformat';
 import axios from "axios";
 
@@ -95,8 +95,8 @@ function useQuery() {
 
 <div class="bg-grey-lighter min-h-screen flex flex-col">
 
-            <div class="container max-w-sm mx-auto m-4 flex-2 flex flex-col items-center justify-center px-2">
-                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+            <div className="container max-w-sm mx-auto m-4 flex-2 flex flex-col items-center justify-center px-2">
+                <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                 <h3 className = "mb-8 text-1xl text-center">Du bokar nu:</h3>
                     <Heading Heading={query.get("name")}/>
                     <Price Price={query.get("price")}/>
@@ -104,27 +104,27 @@ function useQuery() {
                     <Teraphist Teraphist={(query.get("teraphist"))}/>
                     <input 
                         type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="name"
                         placeholder="Namn på Bokning"
                         onChange={onChange} />
 
                     <input 
                         type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="email"
                         placeholder="Email"
                         onChange={onChange} />
 
                     <input 
                         type="text"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="adress"
                         placeholder="Adress" 
                         onChange={onChange}/>
                     <input 
                         type="number"
-                        class="block border border-grey-light w-full p-3 rounded mb-4"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
                         name="phone"
                         placeholder="Telefon"
                         onChange={onChange} />

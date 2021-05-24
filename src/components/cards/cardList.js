@@ -5,7 +5,7 @@ import axios from "axios";
 function CardList () {
 
 const [products, setProducts] = useState([]);
-const [loadPage, setLoadPage] = useState(9);
+const [loadPage, setLoadPage] = useState(2);
 
 
 useEffect (()=>{
@@ -26,7 +26,7 @@ console.log(response);
 
 
 function loadMore() {
- let dynamicPage = loadPage + 2;
+ let dynamicPage = loadPage + 1;
 setLoadPage(dynamicPage)
 
 }
@@ -34,7 +34,7 @@ setLoadPage(dynamicPage)
 
 
 function loadLess() {
-        let dynamicPage = loadPage - 2;
+        let dynamicPage = loadPage - 1;
        setLoadPage(dynamicPage)
        
        }
@@ -45,7 +45,8 @@ return(
 
 {products.map((product)=>{
         return (
-<Card productName={product.name}  
+<Card key ={product.id}
+      productName={product.name}  
       productPrice={product.price} 
       productDate={product.date}
       productImg={product.productimg}
@@ -65,12 +66,13 @@ return(
 
 </div>
 <div className="flex flex-row flex-wrap justify-center">
-{ (products.length >loadPage || products.length === loadPage) ? 
+{ (products.length >=loadPage || products.length === loadPage) ? 
 <button className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded" onClick={loadMore}>Ladda fler bokningsbara tider</button>
 :
 <button className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded" onClick={loadLess}>Ladda färre bokningsbara tider</button> }
 
 </div>
+{/*hejhej*/}
 </>
 
 )

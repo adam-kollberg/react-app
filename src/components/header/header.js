@@ -7,7 +7,7 @@ function Header() {
     return (
     <header className="site-header">
       <div className="logo">
-     <img src="./././logo.jpeg"></img>
+     <img src="./././logo.jpeg" alt="site-logo"></img>
      </div>
       
 

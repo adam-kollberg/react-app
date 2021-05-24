@@ -1,5 +1,5 @@
 import React, { useState, useEffect,  } from "react";
-import{Route, BrowserRouter as Router, Link, useHistory} from "react-router-dom";
+import{  Link, useHistory} from "react-router-dom";
 
 
 function Menu() {
@@ -19,7 +19,11 @@ function Menu() {
    function logout() {
 
     localStorage.clear();
-    history.go(0);
+    history.push("/");
+    window.location.reload()
+
+    
+
 
    }
 

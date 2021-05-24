@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import {Link, useParams, Switch} from "react-router-dom"
+import React from "react";
+import {Link} from "react-router-dom"
 import dateFormat from 'dateformat';
-import Modal from 'react-modal';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,30 +12,14 @@ import { faUser, faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-ico
 
 export default function Card ({productName, productPrice, productDate, productImg, teraphist, productID, teraphistAdress  }) {
     
-    const customStyles = {
-        content : {
-          top                   : '50%',
-          left                  : '50%',
-          right                 : 'auto',
-          bottom                : 'auto',
-          marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)'
-        }
-      };
+   
 
 
 
-      const [modalIsOpen,setIsOpen] = useState(false);
 
-      function openModal() {
-        setIsOpen(true);
-      }
-    
      
     
-      function closeModal(){
-        setIsOpen(false);
-      }
+      
 
 return(
 <>
@@ -44,7 +28,7 @@ return(
 
 <div className="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
 
-<div className="w-1/3 bg-cover" > <img src={`http://localhost:1337${productImg.url}`} alt="some image from database"/>
+<div className="w-1/3 bg-cover" > <img src={`http://localhost:1337${productImg.url}`} alt="booking"/>
 
 </div>
 
