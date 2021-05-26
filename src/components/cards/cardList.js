@@ -1,84 +1,74 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./card";
 import axios from "axios";
 
-function CardList () {
+function CardList() {
+  const [products, setProducts] = useState([]);
+  const [loadPage, setLoadPage] = useState(2);
 
-const [products, setProducts] = useState([]);
-const [loadPage, setLoadPage] = useState(2);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get(
+        `http://localhost:1337/products?_limit=${loadPage}`
+      );
 
+      setProducts(response.data);
 
-useEffect (()=>{
-const fetchProducts=async()=> {
+      console.log(response);
+    };
 
-const response = await axios.get(`http://localhost:1337/products?_limit=${loadPage}`)
+    fetchProducts();
+  }, [loadPage]);
 
-setProducts(response.data)
-
-console.log(response);
-
- }
- 
- fetchProducts();
-
-}, [loadPage])
-
-
-
-function loadMore() {
- let dynamicPage = loadPage + 1;
-setLoadPage(dynamicPage)
-
-}
-
-
-
-function loadLess() {
-        let dynamicPage = loadPage - 1;
-       setLoadPage(dynamicPage)
-       
-       }
-
-return(
-<>
-<div className="flex flex-row flex-wrap justify-center">
-
-{products.map((product)=>{
-        return (
-<Card key ={product.id}
-      productName={product.name}  
-      productPrice={product.price} 
-      productDate={product.date}
-      productImg={product.productimg}
-      productID={product.id}
-      teraphist={product.teraphist.name}
-      teraphistAdress={product.teraphist.Adress}
-      
-      
-      
-      
-      />
-
-   ) 
+  function loadMore() {
+    let dynamicPage = loadPage + 1;
+    setLoadPage(dynamicPage);
   }
- ) 
-}
 
-</div>
-<div className="flex flex-row flex-wrap justify-center">
-{ (products.length >=loadPage || products.length === loadPage) ? 
-<button className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded" onClick={loadMore}>Ladda fler bokningsbara tider</button>
-:
-<button className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded" onClick={loadLess}>Ladda färre bokningsbara tider</button> }
+  function loadLess() {
+    let dynamicPage = loadPage - 1;
+    setLoadPage(dynamicPage);
+  }
 
-</div>
-{/*hejhej*/}
-</>
-
-)
-
+  return (
+    <>
+      <div className="flex flex-row flex-wrap justify-center">
+        {products.map((product) => {
+          return (
+            <Card
+              key={product.id}
+              productName={product.name}
+              productPrice={product.price}
+              productDate={product.date}
+              productImg={product.productimg}
+              productID={product.id}
+              teraphist={product.teraphist.name}
+              teraphistAdress={product.teraphist.Adress}
+              teraphistId={product.teraphist.id}
+            />
+          );
+        })}
+      </div>
+      <div className="flex flex-row flex-wrap justify-center">
+        {products.length >= loadPage || products.length === loadPage ? (
+          <button
+            className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded"
+            onClick={loadMore}
+          >
+            Ladda fler bokningsbara tider
+          </button>
+        ) : (
+          <button
+            className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded"
+            onClick={loadLess}
+          >
+            Ladda färre bokningsbara tider
+          </button>
+        )}
+      </div>
+      
+    </>
+  );
 }
 
 export default CardList;
-
-

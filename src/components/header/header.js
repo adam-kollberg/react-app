@@ -1,23 +1,17 @@
-import React from 'react'
-import Menu from './menu';
+import React from "react";
+import Menu from "./menu";
 import "./header.css";
 
-
 function Header() {
-    return (
+  return (
     <header className="site-header">
       <div className="logo">
-     <img src="./././logo.jpeg" alt="site-logo"></img>
-     </div>
-      
+        <img src="./././logo.jpeg" alt="site-logo"></img>
+      </div>
 
-      <Menu/>
-      
-
-
-      </header>
-    )
+      <Menu />
+    </header>
+  );
 }
 
-export default Header
-
+export default Header;
