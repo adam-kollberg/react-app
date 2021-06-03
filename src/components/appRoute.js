@@ -10,19 +10,20 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import BookingList from "./booking/myBooking";
 import SendPassword from "./login/resetPassword";
 import CheckoutForm from "./booking/checkout";
+import Update from "./booking/update";
 
 
 export default function AppRoute() {
-  const [getToken, setToken] = useState(false);
+  const [getRole, setRole] = useState("");
 
   useEffect(() => {
-    const Token = localStorage.getItem("token");
-    setToken(Token);
+    const Role = localStorage.getItem("role");
+    setRole(Role);
   }, []);
 
   return (
     <>
-      {getToken ? (
+      {getRole ? (
         <Router>
           <Header />
           <Switch>
@@ -35,6 +36,7 @@ export default function AppRoute() {
             <Route path="/forgot-password" component={ResetPassword} />
             <Route path="/reset-password" component={SendPassword} />
             <Route path="/checkout" component={CheckoutForm} />
+            <Route path="/update-booking" component={Update}/>
             
           </Switch>
         </Router>

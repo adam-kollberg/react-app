@@ -39,7 +39,7 @@ function AddCard() {
     e.preventDefault();
 
     console.log("id", addProduct.teraphist);
-    const response = await axios.post("http://localhost:1337/products", {
+    const response = await axios.post("http://mind-strapi.herokuapp.com/products", {
       name: addProduct.productname,
       price: addProduct.price,
       description: addProduct.description,
@@ -58,7 +58,7 @@ function AddCard() {
     console.log(formData);
 
     axios
-      .post(`http://localhost:1337/upload`, formData, {
+      .post(`http://mind-strapi.herokuapp.com/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => {

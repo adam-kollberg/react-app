@@ -2,6 +2,13 @@ import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./checkout.css";
 import dateFormat from "dateformat";
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripePromise = loadStripe('pk_test_51IB6aFBCV55mFhVN8xLXlAsXGWxe197hpZb7GyrvhX6lCwGnQK8Wan3y9iF2grOw3PLygiFtBSP57iCk7fJF13k400hQSYsYbo');
+
+
+
+
 
 function Checkout() {
   const [bookings, setBookings] = useState([]);
@@ -21,6 +28,33 @@ function Checkout() {
 
     fetchBookingID();
   }, []);
+
+
+  const handleClick = async (event) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Call your backend to create the Checkout Session
+    const response = await axios.post('http://localhost:4242/create-checkout-session');
+
+    const session = await response.json();
+
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+    }
+  };
+
+
+
+
+
 
   return (
     <>
@@ -53,6 +87,10 @@ function Checkout() {
             <strong>Pris:</strong> {products.price} SEK{" "}
           </h3>
         </div>
+        <button role="link" onClick={handleClick}
+                type="submit"
+                className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded"
+              >Betala</button>
       </div>
     </>
   );

@@ -3,9 +3,12 @@ import axios from "axios";
 import dateFormat from "dateformat";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function BookingList() {
   const [myBookings, setMyBookings] = useState([]);
+
+
   
 
   useEffect(() => {
@@ -79,6 +82,11 @@ function BookingList() {
                 <button value={bookings.id} onClick={handleDelete} className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
                   Avboka
                 </button>
+                <Link to={`/update-booking?id=${bookings.id}`}>
+                <button value={bookings.id}  className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
+                 Update
+                </button>
+                </Link>
               </div>
             </div>
            

@@ -3,7 +3,12 @@ import { useLocation, useHistory } from "react-router-dom";
 import dateFormat from "dateformat";
 import axios from "axios";
 
+
 function Booking() {
+
+  
+
+
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -88,6 +93,9 @@ function Booking() {
     console.log(formValues);
   }
 
+
+ 
+
   return (
     <>
       <section className="hero">
@@ -133,13 +141,14 @@ function Booking() {
                 placeholder="Telefon"
                 onChange={onChange}
               />
-
-              <button
+  
+              <button role="link" 
                 type="submit"
                 className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded"
               >
                 Fortsätt till betalning
               </button>
+             
             </div>
           </div>
         </div>

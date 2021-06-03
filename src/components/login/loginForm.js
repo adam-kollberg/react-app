@@ -38,10 +38,16 @@ function LoginForm() {
         console.log("User profile", response.data.user);
         localStorage.setItem("token", response.data.jwt);
         localStorage.setItem("id", response.data.user.id);
+        localStorage.setItem("role", response.data.user.role.name);
+        
+        
 
         console.log("id", response.data.user.id);
+        console.log("role", response.data.user.role.name)
+
         history.push("/");
         history.go(0);
+       
       })
       .catch((error) => {
         // Handle error.
