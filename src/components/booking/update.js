@@ -39,7 +39,7 @@ function Update() {
       }, []);
 
       const bookingValues = {
-        namn: `${myBookings.namn}`,
+        name: `${myBookings.name}`,
         email:`${myBookings.email}`,
         
       };
@@ -51,7 +51,7 @@ function Update() {
 
         const response = await axios.put(`http://localhost:1337/bookings/${bookingID}`, {
           namn: formValues.name,
-          email: formValues.email,
+          email: formValues.email
 
 
           
@@ -69,7 +69,7 @@ function Update() {
 
 
       function onChange(e) {
-
+e.preventDefault()
         setFormValues({
             ...formValues,
             [e.target.name]: e.target.value,
@@ -91,15 +91,17 @@ return (
 
               <input
                 type="text"
+                value={myBookings.namn}
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="name"
-                placeholder={myBookings.namn}
+                
                 onChange={onChange}
               />
 
               <input
                 type="text"
-                placeholder={myBookings.email}
+                value={myBookings.email}
+                
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="email"
                 onChange={onChange}

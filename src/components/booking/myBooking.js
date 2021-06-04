@@ -84,7 +84,7 @@ function BookingList() {
                 </button>
                 <Link to={`/update-booking?id=${bookings.id}`}>
                 <button value={bookings.id}  className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
-                 Update
+                 Ändra Kontaktuppgifter
                 </button>
                 </Link>
               </div>
