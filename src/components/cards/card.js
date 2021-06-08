@@ -50,7 +50,7 @@ export default function Card({
               </h1>
 
               <Link
-                to={`/book?name=${productName}&price=${productPrice}&date=${productDate}&id=${productID}&teraphist=${teraphistId}`}
+                to={`/book?name=${productName}&price=${productPrice}&date=${productDate}&id=${productID}&teraphist=${teraphistId}&tname=${teraphist}`}
               >
                 <button className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
                   Boka nu

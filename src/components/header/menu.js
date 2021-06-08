@@ -2,13 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 function Menu() {
-  const [getToken, setToken] = useState(false);
-  const history = useHistory();
+  const [getRole, setRole] = useState("");
 
   useEffect(() => {
-    const Token = localStorage.getItem("token");
-    setToken(Token);
+    const Role = localStorage.getItem("role");
+    setRole(Role);
   }, []);
+  
+  const history = useHistory();
+
+  
 
   function logout() {
     localStorage.clear();
@@ -18,33 +21,34 @@ function Menu() {
 
   return (
     <>
-      {getToken ? (
+      {getRole === "admin" ? (
         <nav className="app-nav">
+          
           <Link exact to="/">
-            Start
-          </Link>
+            Start</Link>
 
           <Link to="/login" onClick={logout}>
-            Logout
+            Logga ut
           </Link>
-
-          <Link to="/add-products">Add products</Link>
-          <Link to="/my-bookings">My Bookings</Link>
-        </nav>
+        <Link to="/add-products">Lägg till Möten</Link>
+        
+          
+      </nav>
       ) : (
         <nav className="app-nav">
           <Link exact to="/">
             Start
           </Link>
 
-          <Link to="/login">Login</Link>
-
-          <Link to="/add-products">Add products</Link>
-          <Link to="/my-bookings">My Bookings</Link>
+          <Link to="/login" onClick={logout}>
+            Logga ut
+          </Link>
+         <Link to="/my-bookings">Mina bokningar</Link>
+          
         </nav>
       )}
     </>
-  );
+  ) 
 }
 
 export default Menu;

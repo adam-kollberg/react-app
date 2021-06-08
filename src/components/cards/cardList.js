@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import Card from "./card";
 import axios from "axios";
 
+
+
 function CardList() {
+  const [loadPage, setLoadPage] = useState(6);
   const [products, setProducts] = useState([]);
-  const [loadPage, setLoadPage] = useState(2);
+  
+  
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,17 +22,23 @@ function CardList() {
     };
 
     fetchProducts();
-  }, [loadPage]);
+  },[loadPage] );
+
 
   function loadMore() {
     let dynamicPage = loadPage + 1;
     setLoadPage(dynamicPage);
   }
 
+
   function loadLess() {
-    let dynamicPage = loadPage - 1;
-    setLoadPage(dynamicPage);
+  
+    setLoadPage(5);
+    
   }
+  
+
+ 
 
   return (
     <>
@@ -48,9 +58,14 @@ function CardList() {
             />
           );
         })}
+
+
+        
       </div>
+
+
       <div className="flex flex-row flex-wrap justify-center">
-        {products.length >= loadPage || products.length === loadPage ? (
+        {products.length > loadPage || products.length === loadPage ? (
           <button
             className="uppercase mt-8 mx-auto shadow bg-indigo-800 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded"
             onClick={loadMore}
@@ -65,7 +80,7 @@ function CardList() {
             Ladda färre bokningsbara tider
           </button>
         )}
-      </div>
+     </div>
       
     </>
   );

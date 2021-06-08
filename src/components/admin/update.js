@@ -39,8 +39,8 @@ function Update() {
       }, []);
 
       const bookingValues = {
-        name: `${myBookings.name}`,
-        email:`${myBookings.email}`,
+        name: myBookings.namn,
+        email:myBookings.email,
         
       };
 
@@ -87,20 +87,20 @@ return (
         <div className="bg-grey-lighter min-h-screen flex flex-col">
           <div className="container max-w-sm mx-auto m-4 flex-2 flex flex-col items-center justify-center px-2">
             <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h3 className="text-center"><strong>Ändra namn och email på din bokning</strong></h3>
+            <h3 className="text-center"><strong>Ändra namn och email på din Denna bokning</strong></h3>
 
               <input
                 type="text"
-                value={myBookings.namn}
+                placeholder={bookingValues.name}
                 className="block border border-black-light w-full p-3 rounded mb-4"
-                name="name"
+                name="namn"
                 
                 onChange={onChange}
               />
 
               <input
                 type="text"
-                value={myBookings.email}
+                placeholder={bookingValues.email}
                 
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="email"

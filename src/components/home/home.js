@@ -2,11 +2,13 @@ import React from "react";
 import CardList from "../cards/cardList";
 import "./home.css";
 
+
 function Home() {
   return (
     <main>
       <section className="hero">
-        <h1> Mind sthlm Booking</h1>
+      
+        <h1> Boka din tid nedan</h1>
       </section>
 
       <CardList />

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-function BookingList() {
+function AllBookings() {
   const [myBookings, setMyBookings] = useState([]);
 
   const [getRole, setRole] = useState("");
@@ -19,9 +19,10 @@ function BookingList() {
   useEffect(() => {
     const fetchBookings = async () => {
       const userId = localStorage.getItem("id");
-      const response = await axios.get(`http://localhost:1337/bookings?_where[users_permissions_user]=${userId}`);
+      const response = await axios.get(`http://localhost:1337/bookings?_sort=date:DESC&_start=0&_limit=100`);
        
       setMyBookings(response.data);
+      console.log(response.data)
       
     };
 
@@ -42,7 +43,10 @@ function BookingList() {
   return (
     <>
       <section className="hero">
-        <h1> Mina Bokningar</h1>
+      <p className="mt-2 text-gray-600 text-sm">
+                  <FontAwesomeIcon icon={faUser} /> <strong>Du är inloggad som Admin</strong> 
+                </p>
+        <h1> Alla bokningar</h1>
       </section>
       {myBookings.map((bookings) => {
         return (
@@ -84,7 +88,14 @@ function BookingList() {
                   
                 </div>
                
-                <h3>för att avboka din bokning mejla: info@mindsthlm.se</h3>
+                <button value={bookings.id} onClick={handleDelete} className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
+                  Ta bort bokningar
+                </button>
+                <Link to={`/update-booking?id=${bookings.id}`}>
+                <button className="mt-8 " value={bookings.id}  className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
+                 Ändra Kontaktuppgifter
+                </button>
+                </Link>
               </div>
             </div>
            
@@ -95,4 +106,4 @@ function BookingList() {
   );
 }
 
-export default BookingList;
+export default AllBookings;

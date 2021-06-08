@@ -110,7 +110,7 @@ function Booking() {
               <Heading Heading={query.get("name")} />
               <Price Price={query.get("price")} />
               <Date Date={dateFormat(query.get("date"), `yyyy-mm-dd HH:MM`)} />
-              <Teraphist Teraphist={query.get("teraphist")} />
+              <Teraphist Teraphist={query.get("tname")} />
               <input
                 type="text"
                 className="block border border-grey-light w-full p-3 rounded mb-4"

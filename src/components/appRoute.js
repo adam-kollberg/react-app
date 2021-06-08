@@ -10,7 +10,8 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import BookingList from "./booking/myBooking";
 import SendPassword from "./login/resetPassword";
 import CheckoutForm from "./booking/checkout";
-import Update from "./booking/update";
+import Update from "./admin/update";
+import AllBookings from "./admin/getAll";
 
 
 export default function AppRoute() {
@@ -21,13 +22,21 @@ export default function AppRoute() {
     setRole(Role);
   }, []);
 
+
   return (
     <>
       {getRole ? (
-        <Router>
+
+        
+<Router>
+
+  
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
+            
+          {getRole=="admin" ? (
+         <Route exact path="/" component={AllBookings} />
+            ): (<Route exact path="/" component={Home} />)}
             <Route path="/book" component={Booking} />
             <Route path="/login" component={LoginForm} />
             <Route path="/add-products" component={AddCard} />
@@ -38,13 +47,21 @@ export default function AppRoute() {
             <Route path="/checkout" component={CheckoutForm} />
             <Route path="/update-booking" component={Update}/>
             
+            
           </Switch>
+          
         </Router>
+
+    
+
+
       ) : (
         <Router>
+          
           <Route exact path="/" component={LoginForm} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/register" component={RegisterForm} />
+          
         </Router>
       )}
     </>

@@ -53,15 +53,13 @@ function LoginForm() {
         // Handle error.
         console.log("An error occurred:", error.response);
 
-        setError("Dina inlämningsuppgifter stämmer inte");
+        setError("Dina inloggningsuppgifter stämmer ej");
       });
   }
 
   return (
     <>
-      {getToken ? (
-        <div>Tack {login.email} du är inloggad</div>
-      ) : (
+      
         <div className="login-box">
           <h2>Login</h2>
           <form onSubmit={submitHandler}>
@@ -99,9 +97,10 @@ function LoginForm() {
 
           <Link to="/forgot-password">forgot</Link>
         </div>
-      )}
+      
     </>
-  );
+  )
 }
+
 
 export default LoginForm;
