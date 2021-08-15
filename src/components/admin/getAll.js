@@ -89,7 +89,7 @@ function AllBookings() {
                 </div>
                
                 <button value={bookings.id} onClick={handleDelete} className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">
-                  Ta bort bokningar
+                  Ta bort bokning
                 </button>
                 <Link to={`/update-booking?id=${bookings.id}`}>
                 <button className="mt-8 " value={bookings.id}  className="px-3 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded">

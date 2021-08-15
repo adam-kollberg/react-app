@@ -12,6 +12,9 @@ import SendPassword from "./login/resetPassword";
 import CheckoutForm from "./booking/checkout";
 import Update from "./admin/update";
 import AllBookings from "./admin/getAll";
+import UpdateUserForm from "./user/updateUser";
+import GetMyProfile from "./user/myProfile";
+
 
 
 export default function AppRoute() {
@@ -46,6 +49,10 @@ export default function AppRoute() {
             <Route path="/reset-password" component={SendPassword} />
             <Route path="/checkout" component={CheckoutForm} />
             <Route path="/update-booking" component={Update}/>
+            <Route path="/update-user" component={UpdateUserForm}/>
+            <Route path="/my-profile" component={GetMyProfile}/>
+            
+            
             
             
           </Switch>

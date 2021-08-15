@@ -44,6 +44,8 @@ function Menu() {
             Logga ut
           </Link>
          <Link to="/my-bookings">Mina bokningar</Link>
+
+         <Link to="/my-profile">Min profil</Link>
           
         </nav>
       )}
